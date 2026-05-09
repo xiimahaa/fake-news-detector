@@ -107,20 +107,20 @@ The project includes a Flask-based web application where users can:
 ---
 
 ## 📁 Project Structure
-FakeNewsDetectionApp/
-│
-├── app.py
-├── fake_news_rf_model.pkl  ( larger than 25MB can't upload in GitHib ) 
-├── tfidf_vectorizer.pkl ( larger than 25MB can't upload in GitHib ) 
-├── requirements.txt
-├── Procfile
-│
-├── templates/
-│ └── index.html
-│
-├── static/
-│ └── style.css
-│
+FakeNewsDetectionApp/  
+│  
+├── app.py  
+├── fake_news_rf_model.pkl   (larger than 25MB – cannot be uploaded to GitHub)  
+├── tfidf_vectorizer.pkl     (larger than 25MB – cannot be uploaded to GitHub)  
+├── requirements.txt  
+├── Procfile  
+│  
+├── templates/  
+│   └── index.html  
+│  
+├── static/  
+│   └── style.css  
+│  
 └── ARTI406_Fake_News_Detectionn.ipynb
 
 
