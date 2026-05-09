@@ -4,6 +4,18 @@ import re
 import string
 import nltk
 from nltk.stem import WordNetLemmatizer
+import os
+import requests
+
+def download_file(url, filename):
+    if not os.path.exists(filename):
+        print(f"Downloading {filename}...")
+        r = requests.get(url)
+        with open(filename, 'wb') as f:
+            f.write(r.content)
+
+download_file("https://drive.google.com/file/d/1YTlVel8LcbAUYOyqYPCiEiu_kwfD7QS4/view?usp=sharing", "fake_news_rf_model.pkl")
+download_file("https://drive.google.com/file/d/1iMahPaNtDGSXsW4Atd00dKs7rz6Aws8I/view?usp=sharing", "tfidf_vectorizer.pkl")
 
 app = Flask(__name__)
 
@@ -78,3 +90,6 @@ def predict():
 # Run app
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+    
+    
+    
