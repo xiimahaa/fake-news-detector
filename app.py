@@ -10,8 +10,8 @@ app = Flask(__name__)
 model = joblib.load('fake_news_rf_model.pkl')
 vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
-nltk.download('stopwords')
-nltk.download('wordnet')
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
 
 # Text preprocessing
 from nltk.corpus import stopwords
