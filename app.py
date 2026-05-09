@@ -7,22 +7,19 @@ from nltk.stem import WordNetLemmatizer
 import os
 import gdown
 
-MODEL_URL = "https://drive.google.com/uc?id=1iMahPaNtDGSXsW4Atd00dKs7rz6Aws8I"
-VECTORIZER_URL = "https://drive.google.com/uc?id=1YTlVel8LcbAUYOyqYPCiEiu_kwfD7QS4"
+MODEL_URL = "https://drive.google.com/uc?id=1YTlVel8LcbAUYOyqYPCiEiu_kwfD7QS4"
+VECTORIZER_URL = "https://drive.google.com/uc?id=1iMahPaNtDGSXsW4Atd00dKs7rz6Aws8I"
 
-if not os.path.exists("fake_news_rf_model.pkl"):
-    gdown.download(MODEL_URL, "fake_news_rf_model.pkl", quiet=False)
+if os.path.exists("fake_news_rf_model.pkl"):
+    os.remove("fake_news_rf_model.pkl")
 
-if not os.path.exists("tfidf_vectorizer.pkl"):
-    gdown.download(VECTORIZER_URL, "tfidf_vectorizer.pkl", quiet=False)
-    
+if os.path.exists("tfidf_vectorizer.pkl"):
+    os.remove("tfidf_vectorizer.pkl")
+
+gdown.download(MODEL_URL, "fake_news_rf_model.pkl", quiet=False)
+gdown.download(VECTORIZER_URL, "tfidf_vectorizer.pkl", quiet=False)
+
 app = Flask(__name__)
-
-model = joblib.load('fake_news_rf_model.pkl')
-vectorizer = joblib.load('tfidf_vectorizer.pkl')
-
-nltk.download('stopwords', quiet=True)
-nltk.download('wordnet', quiet=True)
 
 # Text preprocessing
 from nltk.corpus import stopwords
