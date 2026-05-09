@@ -5,18 +5,17 @@ import string
 import nltk
 from nltk.stem import WordNetLemmatizer
 import os
-import requests
+import gdown
 
-def download_file(url, filename):
-    if not os.path.exists(filename):
-        print(f"Downloading {filename}...")
-        r = requests.get(url)
-        with open(filename, 'wb') as f:
-            f.write(r.content)
+MODEL_URL = "https://drive.google.com/uc?id=1iMahPaNtDGSXsW4Atd00dKs7rz6Aws8I"
+VECTORIZER_URL = "https://drive.google.com/uc?id=1YTlVel8LcbAUYOyqYPCiEiu_kwfD7QS4"
 
-download_file("https://drive.google.com/file/d/1YTlVel8LcbAUYOyqYPCiEiu_kwfD7QS4/view?usp=sharing", "fake_news_rf_model.pkl")
-download_file("https://drive.google.com/file/d/1iMahPaNtDGSXsW4Atd00dKs7rz6Aws8I/view?usp=sharing", "tfidf_vectorizer.pkl")
+if not os.path.exists("fake_news_rf_model.pkl"):
+    gdown.download(MODEL_URL, "fake_news_rf_model.pkl", quiet=False)
 
+if not os.path.exists("tfidf_vectorizer.pkl"):
+    gdown.download(VECTORIZER_URL, "tfidf_vectorizer.pkl", quiet=False)
+    
 app = Flask(__name__)
 
 model = joblib.load('fake_news_rf_model.pkl')
